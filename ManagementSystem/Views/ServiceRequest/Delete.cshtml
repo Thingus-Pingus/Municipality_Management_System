@@ -1,0 +1,117 @@
+﻿@model ManagementSystem.Models.ServiceRequest
+
+<h2>Delete Service Request</h2>
+<p>Are you sure you want to delete this Service Request?</p>
+
+<table>
+    <tr>
+        <td><strong>Citizen ID:</strong></td>
+        <td>@Model.CitizenId</td>
+    </tr>
+    <tr>
+        <td><strong>Service Type:</strong></td>
+        <td>@Model.ServiceType</td>
+    </tr>
+    <tr>
+        <td><strong>Request Date:</strong></td>
+        <td>@Model.RequestDate.ToString("yyyy-MM-dd")</td>
+    </tr>
+    <tr>
+        <td><strong>Status:</strong></td>
+        <td>@Model.Status</td>
+    </tr>
+   
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.RequestId" />
+    <button type="submit">Delete</button>
+    <a href="/ServiceRequest/Index">Cancel</a>
+</form>
+
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Page Title */
+h2 {
+    color: #d9534f;
+    margin-bottom: 10px;
+}
+
+/* Warning Message */
+p {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Table Styling */
+table {
+    width: 50%;
+    margin: 20px auto;
+    background: white;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+td strong {
+    color: #333;
+}
+
+/* Form Styling */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Buttons */
+button, a {
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button {
+    width: 100%;
+    background: #d9534f;
+    color: white;
+    border: none;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #c9302c;
+}
+
+a {
+    width: 95%;
+    background: #6c757d;
+    color: white;
+}
+
+a:hover {
+    background: #545b62;
+}
+</style>

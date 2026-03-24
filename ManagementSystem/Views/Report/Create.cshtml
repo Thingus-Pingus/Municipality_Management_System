@@ -1,0 +1,171 @@
+﻿@model ManagementSystem.Dtos.ReportDto
+@using ManagementSystem.Models
+
+@{
+    ViewData["Title"] = "Create Report";
+    var citizens = ViewBag.Citizens as List<Citizen>;
+}
+
+<h2>Create Report</h2>
+
+<form action="/Report/Create" method="post">
+    @Html.AntiForgeryToken()
+    <div>
+        <label>Citizen</label>
+        <select name="CitizenId" required>
+            <option value="">Select a Citizen</option>
+            @foreach (var citizen in citizens)
+            {
+                <option value="@citizen.CitizenId">@citizen.FullName</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Report Type</label>
+        <input type="text" name="ReportType" required />
+    </div>
+
+    <div>
+        <label>Details</label>
+        <textarea name="Details" required></textarea>
+    </div>
+
+    <div>
+        <label>Submission Date</label>
+        <input type="datetime-local" name="SubmissionDate" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
+    </div>
+
+    <div>
+        <label>Status</label>
+        <select name="Status">
+            <option value="Under Review">Under Review</option>
+            <option value="Approved">Approved</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Pending Approval">Pending Approval</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    <a href="/Report/Index" class="btn btn-secondary mt-3">Back to List</a>
+</form>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }
+}
+
+            <style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Page Title */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Container */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Labels */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input Fields & Select */
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+/* Textarea Resizing */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Focus Effects */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+/* Centering Buttons */
+button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+.btn-secondary {
+    width: 94%;
+    display: block;
+    margin-bottom: 10px;
+}
+</style>

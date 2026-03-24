@@ -1,0 +1,70 @@
+﻿@model ManagementSystem.Models.ErrorView
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h2 class="text-danger">Oops! Something went wrong.</h2>
+<p class="text-muted">We're sorry, but an unexpected error occurred.</p>
+
+@if (Model?.Message != null)
+{
+    <p class="text-warning"><strong>Error Details:</strong> @Model.Message</p>
+}
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Go Back to Home</a>
+</p>
+
+<style>
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 50px;
+}
+
+/* Error Title */
+.text-danger {
+    color: #dc3545;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Error Message */
+.text-muted {
+    color: #6c757d;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Error Details */
+.text-warning {
+    color: #ffc107;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+</style>

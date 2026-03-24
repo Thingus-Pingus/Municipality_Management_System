@@ -1,0 +1,135 @@
+﻿@model IEnumerable<ManagementSystem.Models.Staff>
+
+@{
+    ViewData["Title"] = "Staff";
+}
+
+<h2>Staff List</h2>
+
+<p>
+    <a href="/Staff/Create" class="btn btn-success">Add New Staff</a>
+    <a href="/Home/Index" class="btn btn-success">Home</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>Hire Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var staff in Model)
+        {
+            <tr>
+                <td>@staff.StaffId</td>
+                <td>@staff.FullName</td>
+                <td>@staff.Position</td>
+                <td>@staff.Department</td>
+                <td>@staff.Email</td>
+                <td>@staff.PhoneNumber</td>
+                <td>@staff.HireDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a href="@Url.Action("Details", "Staff", new { id = staff.StaffId })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Edit", "Staff", new { id = staff.StaffId })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", "Staff", new { id = staff.StaffId })" class="btn btn-delete">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Page Header */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+/* Add New Citizen Button */
+.btn-success {
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Table Headers */
+.table thead {
+    background: #0073e6;
+    color: white;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternating Row Colors */
+.table-striped tbody tr:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+/* Actions Buttons */
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 2px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Button Colors */
+.btn-info { background: #17a2b8; color: white; }
+.btn-warning { background: #ff9800; color: white; }
+.btn-delete {background: rgb(210,0,0); color: white; }
+
+/* Hover Effects */
+.btn-info:hover { background: #138496; }
+.btn-warning:hover { background: #e68900; }
+.btn-delete:hover {background: rgb(180,0,0); color: white; }
+
+</style>

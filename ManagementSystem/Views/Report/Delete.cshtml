@@ -1,0 +1,121 @@
+﻿@model ManagementSystem.Models.Report
+
+<h2>Delete Report</h2>
+<p>Are you sure you want to delete this Reoprt?</p>
+
+<table>
+    <tr>
+        <td><strong>Citizen ID:</strong></td>
+        <td>@Model.CitizenId</td>
+    </tr>
+    <tr>
+        <td><strong>Report Type:</strong></td>
+        <td>@Model.ReportType</td>
+    </tr>
+    <tr>
+        <td><strong>Details:</strong></td>
+        <td>@Model.Details</td>
+    </tr>
+    <tr>
+        <td><strong>Submission Date:</strong></td>
+        <td>@Model.SubmissionDate.ToString("yyyy-MM-dd")</td>
+    </tr>
+    <tr>
+        <td><strong>Status:</strong></td>
+        <td>@Model.Status</td>
+    </tr>
+   
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.ReportId" />
+    <button type="submit">Delete</button>
+    <a href="/Report/Index">Cancel</a>
+</form>
+
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Page Title */
+h2 {
+    color: #d9534f;
+    margin-bottom: 10px;
+}
+
+/* Warning Message */
+p {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Table Styling */
+table {
+    width: 50%;
+    margin: 20px auto;
+    background: white;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+td strong {
+    color: #333;
+}
+
+/* Form Styling */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Buttons */
+button, a {
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button {
+    width: 100%;
+    background: #d9534f;
+    color: white;
+    border: none;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #c9302c;
+}
+
+a {
+    width: 95%;
+    background: #6c757d;
+    color: white;
+}
+
+a:hover {
+    background: #545b62;
+}
+</style>

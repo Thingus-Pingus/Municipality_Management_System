@@ -1,0 +1,167 @@
+﻿@model ManagementSystem.Dtos.ServiceRequestDto
+
+@{
+    ViewData["Title"] = "Edit Service Request";
+}
+
+<h2>Edit Service Request</h2>
+
+<form method="post" action="@Url.Action("Edit", "ServiceRequest", new { id = Model.RequestId })">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="id" value="@Model.RequestId" />
+    <input type="hidden" name="RequestId" value="@Model.RequestId" />
+
+    <div>
+        <label>Citizen</label>
+        <select name="CitizenId" class="form-control">
+            @foreach (var citizen in ViewBag.Citizens)
+            {
+                <option value="@citizen.CitizenId" @(Model.CitizenId == citizen.CitizenId ? "selected" : "")>
+                    @citizen.FullName
+                </option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Service Type</label>
+        <input type="text" name="ServiceType" value="@Model.ServiceType" class="form-control" required />
+    </div>
+
+    <div>
+        <label>Submission Date</label>
+        <input type="text" name="RequestDate" value="@Model.RequestDate" class="form-control" readonly />
+    </div>
+
+    <div>
+        <label>Status</label>
+        <select name="Status" class="form-control">
+            <option value="Under Review" @(Model.Status == "Under Review" ? "selected" : "")>Under Review</option>
+            <option value="Approved" @(Model.Status == "Approved" ? "selected" : "")>Approved</option>
+            <option value="Pending Approval" @(Model.Status == "Pending Approval" ? "selected" : "")>Pending Approval</option>
+            <option value="In Progress" @(Model.Status == "In Progress" ? "selected" : "")>In Progress</option>
+            <option value="Rejected" @(Model.Status == "Rejected" ? "selected" : "")>Rejected</option>
+            <option value="Resolved" @(Model.Status == "Resolved" ? "selected" : "")>Resolved</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+    <a href="@Url.Action("Index", "ServiceRequest")" class="btn btn-secondary mt-3">Cancel</a>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }
+}
+
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Page Title */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Container */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Labels */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input Fields & Select Boxes */
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #fff;
+}
+
+/* Readonly Input */
+input[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Focus Effects */
+input:focus, select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+    border: none;
+}
+
+/* Button Colors */
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+/* Hover Effects */
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+/* Centering Buttons */
+button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+.btn-secondary {
+    width: 94%;
+    display: block;
+    margin-bottom: 10px;
+}
+</style>

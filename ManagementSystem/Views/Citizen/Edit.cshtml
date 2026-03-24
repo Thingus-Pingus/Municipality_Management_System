@@ -1,0 +1,150 @@
+﻿@model ManagementSystem.Models.Citizen
+
+@{
+    ViewData["Title"] = "Edit Citizen";
+}
+
+<h2>Edit Citizen</h2>
+
+<form action="@Url.Action("Edit", "Citizen", new { id = Model.CitizenId })" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="CitizenId" value="@Model.CitizenId" />
+
+    <div class="form-group">
+        <label class="control-label">Full Name</label>
+        <input type="text" name="FullName" class="form-control" value="@Model.FullName" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Address</label>
+        <input type="text" name="Address" class="form-control" value="@Model.Address" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Phone Number</label>
+        <input type="text" name="PhoneNumber" class="form-control" value="@Model.PhoneNumber" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Email</label>
+        <input type="email" name="Email" class="form-control" value="@Model.Email" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Date of Birth</label>
+        <input type="date" name="DateOfBirth" class="form-control" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" />
+    </div>
+
+    <input type="hidden" name="RegistrationDate" value="@Model.RegistrationDate.ToString("yyyy-MM-dd")" />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/Citizen/Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }
+}
+
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Page Title */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Container */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Labels */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Focus Effects */
+input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+/* Centering Buttons */
+button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+.btn-secondary {
+    width: 94%;
+    display: block;
+    margin-bottom: 10px;
+}
+</style>

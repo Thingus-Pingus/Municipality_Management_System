@@ -1,0 +1,132 @@
+﻿@model ManagementSystem.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Service Request Details";
+}
+
+<h2>Service Request Details</h2>
+
+<div>
+    <h4>Service Request Information</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Citizen ID</dt>
+        <dd class="col-sm-10">@Model.CitizenId</dd>
+
+        <dt class="col-sm-2">Service Type</dt>
+        <dd class="col-sm-10">@Model.ServiceType</dd>
+
+        <dt class="col-sm-2">Request Date</dt>
+        <dd class="col-sm-10">@(Model.RequestDate.ToString("yyyy-MM-dd") ?? "N/A")</dd>
+
+        <dt class="col-sm-2">Status</dt>
+        <dd class="col-sm-10">@Model.Status</dd>
+    </dl>
+</div>
+
+<div>
+    <a href="@Url.Action("Edit", "ServiceRequest", new { id = Model.RequestId })" class="btn btn-primary">Edit Service Request</a>
+    <a href="/ServiceRequest/Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+<style>
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Page Title */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+a{
+    text-align:center;
+}
+
+/* Citizen Info Container */
+div {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Title */
+h4 {
+    color: #0073e6;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Divider */
+hr {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Data List */
+dl {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 16px;
+    color: #555;
+}
+
+dt {
+    font-weight: bold;
+    color: #333;
+    width: 30%;
+}
+
+dd {
+    width: 70%;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+/* Centering Buttons */
+div:last-child {
+    text-align: center;
+}
+
+</style>
