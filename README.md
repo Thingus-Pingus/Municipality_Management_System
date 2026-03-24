@@ -64,6 +64,11 @@ The ERD illustrating the database design and relationships can be found in the `
 ## Database Setup (Migrations)
 This project uses **Entity Framework Core Code-First Migrations** to generate the database schema.
 
+## Setup DB Connection String
+1. Open the project in Visual Studio
+2. Navigate and open the `appsettings.json` file
+3. Change the `Server=ServerName` name to your SQL Server
+
 ### Steps to create the database:
 
 1. Open the project in Visual Studio  
