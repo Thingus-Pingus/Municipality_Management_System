@@ -5,6 +5,12 @@ The Municipality Management System is a web-based application developed using AS
 
 It provides a centralized platform that improves transparency, reduces manual processes, and enhances communication between citizens and municipal staff.
 
+## Project Timeline
+- Developed: March 2025 – April 2025  
+
+## Updates
+- Refactored and prepared for portfolio use in 2026 
+
 ---
 
 ## Technologies Used
@@ -69,6 +75,8 @@ This project uses **Entity Framework Core Code-First Migrations** to generate th
 2. Navigate and open the `appsettings.json` file
 3. Change the `Server=ServerName` name to your SQL Server
 
+<img width="1040" height="72" alt="image" src="https://github.com/user-attachments/assets/884c5eff-0e34-4097-88f1-71b4ea02ab72" />
+
 ### Steps to create the database:
 
 1. Open the project in Visual Studio  
@@ -78,6 +86,8 @@ This project uses **Entity Framework Core Code-First Migrations** to generate th
 ```bash
 Update-Database
 ```
+
+<img width="918" height="258" alt="image" src="https://github.com/user-attachments/assets/e5a211cc-4c65-410c-b2db-d927ce95465c" />
 
 This will:
 - Create the database
